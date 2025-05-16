@@ -63,15 +63,15 @@ def parse_iperf_log_with_fixed_values(file_path):
     ]
     
     return pd.DataFrame(data)[columns]  # 按指定顺序排列列
-
+    
 # 使用示例
 if __name__ == "__main__":
     # 从文件读取日志
-    input_file = r".\rawData\1-3-4.txt"
-    output_file = r".\extractedData\1-3-4.csv" 
+    input_file = r".\rawData\4-2-1.txt"
+    output_file = r".\extractedData\4-2-1.csv" 
     # 解析日志文件
     df = parse_iperf_log_with_fixed_values(input_file)
-    
+    df['Loss_Rate(%)'].fillna(100,inplace=True)
     # 保存为CSV
     df.to_csv(output_file, index=False)
     print(f"成功解析并保存结果到 {output_file}")
