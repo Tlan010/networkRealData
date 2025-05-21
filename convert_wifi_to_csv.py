@@ -55,7 +55,7 @@ def parse_iperf_log_with_fixed_values(file_path):
     # 确保列顺序符合要求
     columns = [
         'P1(dBm)', 'Fre1(MHz)', 'W1(MHz)','d1(cm)',
-        # 'P2(dBm)', 'Fre2(MHz)', 'W2(MHz)','d2(cm)',
+        'P2(dBm)', 'Fre2(MHz)', 'W2(MHz)','d2(cm)',
         'P3(dBm)', 'Fre3(MHz)', 'W3(MHz)','d3(cm)',
         'P4(dBm)', 'Fre4(MHz)', 'W4(MHz)','d4(cm)',
         'Transfer(KBytes)', 'Bandwidth(Kbits/sec)', 
@@ -67,8 +67,8 @@ def parse_iperf_log_with_fixed_values(file_path):
 # 使用示例
 if __name__ == "__main__":
     # 从文件读取日志
-    input_file = r".\rawData\4-2-1.txt"
-    output_file = r".\extractedData\4-2-1.csv" 
+    input_file = r".\rawData\1-2-3-4-500.txt"
+    output_file = r".\extractedData\1-2-3-4-500.csv" 
     # 解析日志文件
     df = parse_iperf_log_with_fixed_values(input_file)
     df['Loss_Rate(%)'].fillna(100,inplace=True)
