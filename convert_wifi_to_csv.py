@@ -67,8 +67,8 @@ def parse_iperf_log_with_fixed_values(file_path):
 # 使用示例
 if __name__ == "__main__":
     # 从文件读取日志
-    input_file = r".\rawData\1-2-3-4-500.txt"
-    output_file = r".\extractedData\1-2-3-4-500.csv" 
+    input_file = r".\rawData\4-2-1-500.txt"
+    output_file = r".\extractedData\4-2-1-500.csv" 
     # 解析日志文件
     df = parse_iperf_log_with_fixed_values(input_file)
     df['Loss_Rate(%)'].fillna(100,inplace=True)
