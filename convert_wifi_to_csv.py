@@ -8,22 +8,22 @@ def parse_iperf_log_with_fixed_values(file_path):
     
     # 预定义的固定值
     default_fixed_values = {
-        'P1(dBm)': 20,
+        'P1(dBm)': 260,
         'Fre1(MHz)': 5220,
         'W1(MHz)': 80,
-        'P2(dBm)': 20,
+        'P2(dBm)': 270,
         'Fre2(MHz)': 5220,
         'W2(MHz)': 80,
-        'P3(dBm)': 20,
+        'P3(dBm)': 280,
         'Fre3(MHz)': 5220,
         'W3(MHz)': 80,
-        'P4(dBm)': 20,
+        'P4(dBm)': 290,
         'Fre4(MHz)': 5220,
         'W4(MHz)': 80,
         'd1(cm)': 0,    
-        'd2(cm)': 10,
-        'd3(cm)': 20,
-        'd4(cm)': 30,
+        'd2(cm)': 20,
+        'd3(cm)': 60,
+        'd4(cm)': 100,
     }
 
     
@@ -40,7 +40,7 @@ def parse_iperf_log_with_fixed_values(file_path):
                 # 提取动态指标
                 dynamic_data = {
                     'Transfer(KBytes)': float(parts[4]),
-                    'Bandwidth(Kbits/sec)': float(parts[6]),
+                    'Bandwidth(Kbits/sec)': float(parts[6]) * 1000 if 'Mbits' in parts[7] else float(parts[6]),
                     'Jitter(ms)': float(parts[8]),
                     'Loss_Rate(%)': float(loss_rate)
                 }
@@ -56,7 +56,7 @@ def parse_iperf_log_with_fixed_values(file_path):
     columns = [
         'P1(dBm)', 'Fre1(MHz)', 'W1(MHz)','d1(cm)',
         'P2(dBm)', 'Fre2(MHz)', 'W2(MHz)','d2(cm)',
-        # 'P3(dBm)', 'Fre3(MHz)', 'W3(MHz)','d3(cm)',
+        'P3(dBm)', 'Fre3(MHz)', 'W3(MHz)','d3(cm)',
         'P4(dBm)', 'Fre4(MHz)', 'W4(MHz)','d4(cm)',
         'Transfer(KBytes)', 'Bandwidth(Kbits/sec)', 
         'Jitter(ms)', 'Loss_Rate(%)'
@@ -67,8 +67,8 @@ def parse_iperf_log_with_fixed_values(file_path):
 # 使用示例
 if __name__ == "__main__":
     # 从文件读取日志
-    input_file = r".\rawData\100k-1000\4-2-1.txt"
-    output_file = r".\extractedData\100k\1000\4-2-1.csv" 
+    input_file = r".\rawData\1m\4-1-total.txt"
+    output_file = r".\extractedData\1m\4-1-total.csv" 
     # 解析日志文件
     df = parse_iperf_log_with_fixed_values(input_file)
     df['Loss_Rate(%)'].fillna(100,inplace=True)
