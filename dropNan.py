@@ -16,9 +16,9 @@ def drop_nan(df,change_point):
 
 if __name__ == "__main__":
     # 从文件读取文件
-    input_file = r".\extractedData\1m\4-1-total.csv" 
-    change_point=[1046,2117,3165]
+    input_file = r".\extractedData\new\1-4.csv" 
+    change_point=[]
     df,change_point = drop_nan(pd.read_csv(input_file),change_point=change_point)
     print(change_point)
-    output_file = rf".\extractedData\1m\4-1-total-{'-'.join(map(str, change_point))}.csv" 
+    output_file = rf".\extractedData\new\1-4-dropnan{'-'.join(map(str, change_point))}.csv" 
     df.to_csv(output_file, index=False)

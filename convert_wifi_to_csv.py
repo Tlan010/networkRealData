@@ -8,22 +8,22 @@ def parse_iperf_log_with_fixed_values(file_path):
     
     # 预定义的固定值
     default_fixed_values = {
-        'P1(dBm)': 260,
+        'P1(dBm)': 250,
         'Fre1(MHz)': 5220,
         'W1(MHz)': 80,
-        'P2(dBm)': 270,
+        'P2(dBm)': 250,
         'Fre2(MHz)': 5220,
         'W2(MHz)': 80,
-        'P3(dBm)': 280,
+        'P3(dBm)': 250,
         'Fre3(MHz)': 5220,
         'W3(MHz)': 80,
-        'P4(dBm)': 290,
+        'P4(dBm)': 250,
         'Fre4(MHz)': 5220,
         'W4(MHz)': 80,
         'd1(cm)': 0,    
         'd2(cm)': 20,
-        'd3(cm)': 60,
-        'd4(cm)': 100,
+        'd3(cm)': 40,
+        'd4(cm)': 60,
     }
 
     
@@ -67,8 +67,8 @@ def parse_iperf_log_with_fixed_values(file_path):
 # 使用示例
 if __name__ == "__main__":
     # 从文件读取日志
-    input_file = r".\rawData\1m\4-1-total.txt"
-    output_file = r".\extractedData\1m\4-1-total.csv" 
+    input_file = r".\rawData\new\1-2-3-4.txt"
+    output_file = r".\extractedData\new\1-2-3-4.csv" 
     # 解析日志文件
     df = parse_iperf_log_with_fixed_values(input_file)
     df['Loss_Rate(%)'].fillna(100,inplace=True)
