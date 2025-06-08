@@ -8,22 +8,22 @@ def parse_iperf_log_with_fixed_values(file_path):
     
     # 预定义的固定值
     default_fixed_values = {
-        'P1(dBm)': 250,
+        'P1(dBm)': 260,
         'Fre1(MHz)': 5220,
         'W1(MHz)': 80,
         'P2(dBm)': 250,
         'Fre2(MHz)': 5220,
         'W2(MHz)': 80,
-        'P3(dBm)': 250,
+        'P3(dBm)': 260,
         'Fre3(MHz)': 5220,
         'W3(MHz)': 80,
-        'P4(dBm)': 250,
+        'P4(dBm)': 260,
         'Fre4(MHz)': 5220,
         'W4(MHz)': 80,
         'd1(cm)': 0,    
         'd2(cm)': 20,
-        'd3(cm)': 40,
-        'd4(cm)': 60,
+        'd3(cm)': 35,
+        'd4(cm)': 70,
     }
 
     
@@ -55,7 +55,7 @@ def parse_iperf_log_with_fixed_values(file_path):
     # 确保列顺序符合要求
     columns = [
         'P1(dBm)', 'Fre1(MHz)', 'W1(MHz)','d1(cm)',
-        'P2(dBm)', 'Fre2(MHz)', 'W2(MHz)','d2(cm)',
+        # 'P2(dBm)', 'Fre2(MHz)', 'W2(MHz)','d2(cm)',
         'P3(dBm)', 'Fre3(MHz)', 'W3(MHz)','d3(cm)',
         'P4(dBm)', 'Fre4(MHz)', 'W4(MHz)','d4(cm)',
         'Transfer(KBytes)', 'Bandwidth(Kbits/sec)', 
@@ -67,8 +67,8 @@ def parse_iperf_log_with_fixed_values(file_path):
 # 使用示例
 if __name__ == "__main__":
     # 从文件读取日志
-    input_file = r".\rawData\new\1-2-3-4.txt"
-    output_file = r".\extractedData\new\1-2-3-4.csv" 
+    input_file = r".\rawData\new\1-3-4_new.txt"
+    output_file = r".\extractedData\new\1-3-4_new.csv" 
     # 解析日志文件
     df = parse_iperf_log_with_fixed_values(input_file)
     df['Loss_Rate(%)'].fillna(100,inplace=True)
